@@ -1,0 +1,47 @@
+<% include ./partials/header %>
+
+    <div class="ui main text container segment">
+        <div class="ui medium header">
+            <%= blog.title %>
+        </div>
+        <div class="ui top attached">
+            <div class="item">
+                <img class="ui centered medium rounded image" src="<%= blog.image %>" alt="">
+            </div>
+            <br>
+            <div class="content">
+                <em>
+                    <%= blog.date.toDateString() %>
+                </em>
+            </div>
+            <div class="description">
+                <%- blog.body %>
+
+            </div>
+            <a class="ui basic button" href="/blog/<%= blog._id %>/edit">Edit</a>
+
+            <form style="display: initial;" action="/blog/<%= blog._id %>?_method=DELETE" method="POST">
+                <button class="ui red basic button">Delete</button>
+            </form>
+
+        </div>
+        <div class="ui comments">
+            <%blog.comments.forEach(function(comment){ %>
+                <div class="comment">
+                    <div class="content">
+                        <a class="author">
+                            <%- comment.author.username.toUpperCase() %>
+                        </a>
+                        <div class="metadata">
+                            <div class="date">2 days ago</div>
+                        </div>
+                        <div class="text">
+                            <%- comment.text %>
+
+                        </div>
+                    </div>
+                </div>
+                <%})%>
+                <a class="ui basic button" href="/blog/<%= blog._id %>/comment/new">Add Comments</a>
+        </div>
+    </div>

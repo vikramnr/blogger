@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <title>Blog</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+</head>
+
+<body>
+    <div class="ui fixed inverted menu">
+        <div class="ui container main">
+
+            <a href="/" class="item">
+                <i class="write icon"></i>
+                Blog
+
+            </a>
+            <a href="/blog/new" class="item">New Post</a>
+            <div class="right menu">
+                <%if(!username){%>
+                    <a href="/login" class="item">Login</a>
+                    <a href="/register" class="item">Register</a>
+                    <%}else{%>
+
+                        <span class="item">
+                            <i class="user icon"></i>
+                            <%=username.username.charAt(0).toUpperCase() + username.username.slice(1) %>
+                        </span>
+                        <a href="/logout" class="item">Log Out</a>
+                        <%}%>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <%if(error && error.length>0){%>
+        <br>
+        <br>
+        <div class="ui two column centered grid">
+            <div class="column">
+                <div class="ui compact negative message">
+                    <div class="header">
+
+                        <%=error%>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </div>
+
+        <%if(success && success.length>0){%>
+            <br>
+            <br>
+            <div class="ui two column centered grid">
+                <div class="column">
+                    <div class="ui positive message">
+                        <div class="header">
+
+                            <%=success%>
+                        </div>
+                    </div>
+                    <%}%>
+                </div>
+            </div>
+            <br>
+            <br>

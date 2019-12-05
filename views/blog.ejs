@@ -1,0 +1,27 @@
+<% include ./partials/header %>
+  <div class="ui main text container segment">
+    <div class="ui medium">
+      <% blog.forEach(function(blog){ %>
+        <div class="ui items">
+          <div class="item">
+            <div class="image">
+              <img src="<%= blog.image %>" alt="">
+            </div>
+            <div class="content">
+              <a class="header">
+                <%= blog.title %>
+              </a>
+              <div class="description">
+                <p>
+                  <%= blog.body.substring(0,100)%>...</p>
+                </p>
+              </div>
+              <div class="extra">
+                <a href="/blog/<%= blog._id %>">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="ui divider"></div>
+          <% }) %>
+        </div>
+    </div>

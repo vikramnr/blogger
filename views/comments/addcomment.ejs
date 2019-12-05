@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+    <div class="ui main text container segment">
+        <div class="ui medium header">
+            <%= foundBlog.title%>
+        </div>
+        <form class="ui form" action="/blog/<%= foundBlog._id%>/comment" method="POST">
+            <div class="field">
+                <label>Your Comment</label>
+                <input type="text" name="comment[text]" id="" placeholder="Your comment please">
+            </div>
+            <input class="ui button" type="submit" value="Submit">
+        </form>
+    </div>
